@@ -3,16 +3,24 @@ using System.Diagnostics;
 
 List<AbstractSort> algorithms = new()
 {
-    new SelectionSort(),
-    new InsertionSort(),
-    new BubbleSort(),
-    new MergeSort(),
-    new ShellSort(),
+    //new SelectionSort(),
+    //new InsertionSort(),
+    //new BubbleSort(),
+    //new MergeSort(),
+    //new ShellSort(),
     new QuickSort(),
-    new HeapSort()
+    //new HeapSort(),
+    //new BlockSort(),
+    //new BucketSort(),
+    //new CubeSort(),
+    //new CycleSort(),
+    new RadixSort(),
+    //new StrandSort(),
+    //new TreeSort(),
+    new TimSort()
 };
 
-for (int n = 0; n <= 100000; n += 10000)
+for (int n = 0; n <= 10000000; n += 1000000)
 {
     Console.WriteLine($"\nRunning tests for n = {n}:");
     List<(Type Type, long Ms)> milliseconds = [];
@@ -48,6 +56,16 @@ static int[] GetRandomArray(long length)
     for (int i = 0; i < length; i++)
     {
         array[i] = random.Next(-100000, 100000);
+    }
+    return array;
+}
+
+static int[] GetWorstArray(long length)
+{
+    int[] array = new int[length];
+    for (int i = 0; i < length; i++)
+    {
+        array[i] = Int32.MaxValue - i;
     }
     return array;
 }
